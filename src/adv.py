@@ -1,6 +1,8 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
+
 
 room = {
     'outside':  Room("Outside Cave Entrance",
@@ -49,3 +51,42 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+
+
+def run_game():
+    p1 = Player("P1",room["outside"])
+
+    print(f"You're currently in {p1.current_room}")
+    # print(f"Room Description: {p1.description}")
+        #LOOP 
+    while True:
+        cmd = input("-> ")
+        if cmd == "n":
+            p1.current_room = p1.current_room.n_to 
+            print(f"You're currently in {p1.current_room}")
+        elif cmd == "s":
+            p1.current_room = p1.current_room.s_to
+            print(f"{p1.current_room}")
+        elif cmd == "e":
+            p1.current_room = p1.current_room.e_to
+            print(f"{p1.current_room}")
+        elif cmd == "w":
+            p1.current_room = p1.current_room.w_to
+            print(f"{p1.current_room}")
+        elif cmd == "q":
+            print("Exiting Game")
+            break
+        else:
+            print("Invalid selection. Please try another direction.")
+    #READ
+    #EVALUATE
+    #PRINT
+
+
+def main():
+    run_game()
+
+
+if __name__ == "__main__":
+    main()
