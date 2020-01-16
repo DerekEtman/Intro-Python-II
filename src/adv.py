@@ -64,7 +64,7 @@ def run_game():
         cmd = input("-> ")
         if cmd == "n":
             p1.current_room = p1.current_room.n_to 
-            print(f"You're currently in {p1.current_room}")
+            print(f"{p1.current_room}")
         elif cmd == "s":
             p1.current_room = p1.current_room.s_to
             print(f"{p1.current_room}")
