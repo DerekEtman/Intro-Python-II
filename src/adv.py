@@ -55,33 +55,30 @@ room['treasure'].s_to = room['narrow']
 
 
 def run_game():
-    p1 = Player("P1",room["outside"])
+    player1 = Player(input("Your name? "),room["outside"])
 
-    print(f"You're currently in {p1.current_room}")
+    print(f"You're currently in {player1.current_room}")
     # print(f"Room Description: {p1.description}")
-        #LOOP 
+
+    directions = ["n", "s", "e", "w"]
     while True:
-        cmd = input("-> ")
-        if cmd == "n":
-            p1.current_room = p1.current_room.n_to 
-            print(f"{p1.current_room}")
-        elif cmd == "s":
-            p1.current_room = p1.current_room.s_to
-            print(f"{p1.current_room}")
-        elif cmd == "e":
-            p1.current_room = p1.current_room.e_to
-            print(f"{p1.current_room}")
-        elif cmd == "w":
-            p1.current_room = p1.current_room.w_to
-            print(f"{p1.current_room}")
+        # Converts all input to lower case to omit any Case Issues
+        cmd = input("-> ").lower()
+        #Checking to see if the input matches any of our commands
+        if cmd in directions:
+            # move player towards the input direction
+            player1.travel(cmd)
         elif cmd == "q":
             print("Exiting Game")
-            break
+            exit()
         else:
             print("Invalid selection. Please try another direction.")
     #READ
     #EVALUATE
     #PRINT
+
+    # Make player travel in a direction
+    # player.travel(cmd)
 
 
 def main():
