@@ -1,6 +1,8 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
+
 
 room = {
     'outside':  Room("Outside Cave Entrance",
@@ -49,3 +51,39 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+
+
+def run_game():
+    player1 = Player(input("Your name? "),room["outside"])
+
+    print(f"You're currently in {player1.current_room}")
+    # print(f"Room Description: {p1.description}")
+
+    directions = ["n", "s", "e", "w"]
+    while True:
+        # Converts all input to lower case to omit any Case Issues
+        cmd = input("-> ").lower()
+        #Checking to see if the input matches any of our commands
+        if cmd in directions:
+            # move player towards the input direction
+            player1.travel(cmd)
+        elif cmd == "q":
+            print("Exiting Game")
+            exit()
+        else:
+            print("Invalid selection. Please try another direction.")
+    #READ
+    #EVALUATE
+    #PRINT
+
+    # Make player travel in a direction
+    # player.travel(cmd)
+
+
+def main():
+    run_game()
+
+
+if __name__ == "__main__":
+    main()
